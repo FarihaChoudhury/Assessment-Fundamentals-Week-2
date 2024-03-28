@@ -87,12 +87,6 @@ class Trainee:
                                        MultipleChoiceAssessment)):
             raise TypeError("Incorrect assessment type")
 
-#####
-#
-# COPY YOUR CODE FROM LEVEL 1 ABOVE
-#
-#####
-
 
 if __name__ == "__main__":
     trainee = Trainee("Sigma", "trainee@sigmalabs.co.uk", date(1990, 1, 1))
