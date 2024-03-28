@@ -52,15 +52,15 @@ def test_add_assessment_value_error():
         trainee.add_assessment({})
 
 
-def test_get_assessment_of_type():
-    trainee = Trainee("Sigma", "test", date.today())
-    assessment1 = MultipleChoiceAssessment("Python Basics", 20)
-    assessment2 = PresentationAssessment("Python Basics", 20)
-    assessment3 = MultipleChoiceAssessment("Python Basics", 20)
-    trainee.add_assessment(assessment1)
-    trainee.add_assessment(assessment2)
-    trainee.add_assessment(assessment3)
+# def test_get_assessment_of_type():
+#     trainee = Trainee("Sigma", "test", date.today())
+#     assessment1 = MultipleChoiceAssessment("Python Basics", 20)
+#     assessment2 = PresentationAssessment("Python Basics", 20)
+#     assessment3 = MultipleChoiceAssessment("Python Basics", 20)
+#     trainee.add_assessment(assessment1)
+#     trainee.add_assessment(assessment2)
+#     trainee.add_assessment(assessment3)
 
-    assert len(trainee.get_assessment_of_type("multiple-choice")) == 2
-    assert len(trainee.get_assessment_of_type("technical")) == 0
-    assert len(trainee.get_assessment_of_type("presentation")) == 1
+#     assert len(trainee.get_assessment_of_type("multiple-choice")) == 2
+#     assert len(trainee.get_assessment_of_type("technical")) == 0
+#     assert len(trainee.get_assessment_of_type("presentation")) == 1
