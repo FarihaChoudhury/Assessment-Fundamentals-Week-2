@@ -1,45 +1,31 @@
-from datetime import date, datetime
-
-# You should have a `Trainee` class that has the following attributes:
-
-# - `name` - str
-# - `email` - str
-# - `date_of_birth` - `date` object
-# - `assessments` - list[Assessment]
-
-# It has methods to:
-
-# - `get_age() -> int` - returns the age of the trainee in years
-# - `add_assessment(assessment: Assessment) -> None` - adds an `Assessment` to the trainee's list of assessments
-# - `get_assessment(name: str) -> Assessment | None` - returns the `Assessment` object that has the name given
-#   - Return `None` if not found
-
-# You should have an `Assessment` class that has the following attributes:
-
-# - `name` - str
-# - `type` - str
-#   - Can only be `multiple-choice`, `technical` or `presentation`. Throw a ValueError if not.
-# - score - float (0-100). Throw a ValueError if outside of this range.
+""" Task 1: Trainee and assessment """
+from datetime import date
 
 
 class Assessment:
-    def __init__(self, name: str, type: str, score: float):
+    """ Different assessments, their names, types, and score"""
+
+    def __init__(self, name: str, assessment_type: str, score: float):
         self.name = name
-        self.validate_type(type)
+        self.validate_type(assessment_type)
         self.validate_score(score)
-        self.type = type
+        self.type = assessment_type
         self.score = score
 
-    def validate_type(self, type):
-        if type != "multiple-choice" and type != "technical" and type != "presentation":
+    def validate_type(self, assessment_type):
+        """ Validates if assessment if of correct type """
+        if assessment_type not in ('multiple-choice', 'technical', 'presentation'):
             raise ValueError("Invalid type of assessment")
 
     def validate_score(self, score):
+        """ Validates if assessment score is within correct range """
         if score > 100 or score < 0:
             raise ValueError("Outside range")
 
 
 class Trainee:
+    """ Trainee with name, email, date of birth and assessments """
+
     def __init__(self, name: str, email: str, date_of_birth: date):
         self.name = name
         self.email = email
@@ -47,6 +33,7 @@ class Trainee:
         self.assessments = []
 
     def get_age(self) -> int:
+        """ Computes age of trainee """
         today = date.today()
         age = today.year - self.date_of_birth.year - \
             (((today.month, today.day) <
@@ -54,9 +41,11 @@ class Trainee:
         return age
 
     def add_assessment(self, assessment: Assessment) -> None:
+        """ Adds assessments to trainee """
         self.assessments.append(assessment)
 
     def get_assessment(self, name: str) -> Assessment | None:
+        """ Retrieves assessment for trainee by assessment name"""
         for assessment in self.assessments:
             if assessment.name == name:
                 return assessment
